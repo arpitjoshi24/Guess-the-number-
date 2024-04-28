@@ -81,14 +81,14 @@
     <section  class=" button-85 mt-12 border-2 p-2 sm:p-12 bg-white rounded-xl mx-12 sm:mx-56">
     <h1 class="text-center text-5xl">Guess The number</h1>
     <div class=" mt-6">
-        <input class="ml-10 sm:ml-96 text-black border-2 border-black rounded-md p-1" type="text" id="input">
-        <button id="submit" class="text-lg py-1 sm:mx-0 mx-24 sm:mt-0 mt-6 px-2 rounded-md bg-blue-600 text-white border-2 border-black"> submit</button>
+        <input class="ml-0 sm:ml-96 text-black border-2 border-black rounded-md p-1 " placeholder=" guess 1 to 100"  type="text" id="input">
+        <button id="submit" class="text-lg py-1 sm:mx-0 mx-10 sm:mt-0 mt-6 px-2 rounded-md bg-blue-600 text-white border-2 border-black"> submit</button>
     </div>
         
     <h4 class="text-center text-lg mt-10 "> 
-        previous guess -<span id="pguess"> </span>
+        previous guess =<span id="pguess"> </span>
     </h4>
-    <h4 class="text-center text-lg mt-6"> Remaining guesses-<span id="rguess">10</span></h4>
+    <h4 class="text-center text-lg mt-6"> Remaining guesses = <span id="rguess">10</span></h4>
     <h4 class="text-center text-lg mt-6" id="upandhigh"></h4>
 </section>
 </body>
@@ -109,7 +109,8 @@ function generate_random() {
 }
 submit.addEventListener('click', () => {
     guesses = input.value;
-    if(guesses>nums){
+    
+        if(guesses>nums){
         upandhigh.innerHTML="higher";
         pguess.innerHTML=guesses;
         guessed.innerHTML=--no;
@@ -126,5 +127,13 @@ submit.addEventListener('click', () => {
         pguess.innerHTML=guesses;
         guessed.innerHTML=--no;
     }
+    
+    if (parseInt(guessed.innerHTML) <= 0) {
+      pguess.innerHTML= 0;
+        upandhigh.innerHTML ="Game Over! Retry"
+        guessed.innerHTML = "out of moves";
+    }
 });
+
+
 </script>
